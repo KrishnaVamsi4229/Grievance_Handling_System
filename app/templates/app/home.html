@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+    html,body {
+        margin : 0;
+        padding : 0;
+        width : 100%;
+        height : 100%
+        overflow : hidden;
+    }
+    button {
+        width : 213px ;
+        height : 50px ;
+        font-weight : bold ;
+        font-size : 16px ;
+        font-family : sans-serif ;
+    }
+    p{
+        font-family : sans-serif ;
+        color : black ;
+    }
+    .name {
+        animation : fadeIn 3s ease-in-out;
+    }
+    @keyframes fadeIn {
+        0%{
+            opacity : 0;
+            transform : scale(0.8);
+        }
+        100%{
+            opacity : 1;
+            transform : scale(1);
+        }
+    }
+</style>
+</head>
+<body style="background-image : url('https://api.realadvice.in/uploads/complaint-desktb.png') ; background-repeat : no-repeat ; background-size : cover ;">
+<div style="height : 100% ;">
+    <h1 style="color: white ; font-family : sans-serif ; font-size : 39px ; padding-left : 10px ;" class="name">File The Complaint</h1>
+    <div style="width : 100 ; padding-left : 800px ; padding-top : 146px ;">
+        <div style="width : 400px ; height : 300px; background-color: orange ; border : 6px solid black; border-radius : 17px ; display : flex ; flex-direction : column ; justify-content : center ; align-items : center ;">
+            <a href="/app/register/"><button> Register </button></a>
+            <p>Register Now</p>
+            <br>
+            <a href="/app/login/"><button> Login </button></a>
+            <p>Please Register Before Login</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

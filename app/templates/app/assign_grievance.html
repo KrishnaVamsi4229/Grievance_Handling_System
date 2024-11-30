@@ -1,0 +1,53 @@
+ <!-- grievances/assign_grievance.html -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Assign Grievance</title>
+     <style>
+        label{
+            font-size : 50px ;
+            padding-left : 200px ;
+        }
+        select{
+            font-size : 20px ;
+            text-align : center ;
+        }
+        button{
+            font-size : 20px ;
+        }
+        p{
+            padding-left : 100px;
+        }
+    </style>
+ </head>
+ <body style="background-image : url('https://eskipaper.com/images/computer-wallpaper-27.jpg') ; background-repeat : no-repeat ; background-size : cover ; width : 100 ; height : 100vh ; overflow : hidden ; ">
+ <h2 style="color : white ; font-family : sans-serif ; font-size : 40px; ">Assign Grievance</h2>
+ <div style="width : 100% ; height : 100vh ; display : flex ; justify-content : center ;">
+    <div style="width : 900px ; color : white ; font-family : sans-serif ; font-size : 30px ; font-weight : bold ; height : 100px ; padding-bottom : 60px ; margin-top : 90px ;">
+        <form method="post">
+            {% csrf_token %}
+            <label for="department_head">Assign to Department</label>
+            <br>
+            <br>
+            <div style="padding-left : 370px ; ">
+                <select name="department_head" id="department_head">
+                    {% for department_head in department_heads %}
+                        <option value="{{ department_head.department.name }}">{{ department_head.department.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div style="padding-left : 340px ; ">
+                <button type="submit">Assign Grievance</button>
+            </div>
+        </form>
+        {% if message %}
+            <p>{{ message }}</p>  <!-- This will display the success or error message -->
+        {% endif %}
+    </div>
+</div>
+ </body>
+ </html>

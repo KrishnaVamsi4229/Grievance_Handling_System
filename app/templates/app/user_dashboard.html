@@ -1,0 +1,104 @@
+<!-- grievances/user_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            margin-top: 30px;
+            color: white;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+        .add-button {
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f1f1f1;
+            font-weight: bold;
+            color: #555;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .comments-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .comments-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="background-image : url('https://wallpapercrafter.com/sizes/3840x2160/240944-laptop-computer-color-and-colour-hd.jpg') ; background-repeat : no-repeat ; background-size : cover ; background-repeat : no-repeat ; background-position : center ; height : 100vh ;">
+
+<a href="{% url 'create_grievance' %}" class="add-button">Add Grievance</a>
+
+<div class="container">
+    <h2>Your Grievances</h2>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Feedback</th>
+        </tr>
+        {% for grievance in grievances %}
+        <tr>
+            <td>{{ grievance.grievance_type }}</td>
+            <td>{{ grievance.description }}</td>
+            <td style="
+                {% if grievance.status == 'resolved' %}color: green;{% endif %}
+                {% if grievance.status == 'under_review' %}color: purple;{% endif %}
+                {% if grievance.status == 'received' %}color: red;{% endif %}
+            ">
+                {{ grievance.get_status_display }}
+            </td>
+            <td>{{ grievance.get_priority_display }}</td>
+            <td><a href="{% url 'feedback_submit' grievance.id %}" style="text-decoration : none; color : orange ;">Open</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" style="text-align:center;">No grievances found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
