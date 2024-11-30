@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import pymysql
+pymysql.install_as_MySQLdb()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,8 @@ SECRET_KEY = 'django-insecure-*(xm56#gtn&-z65^c+qk-(t!2nj*o0)esg0#5t+@mydu@(bg)3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'grievance-handling-system.vercel.app']
+
 
 AUTH_USER_MODEL = 'app.User'
 
