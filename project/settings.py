@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',  # Localhost for development
     'localhost',  # Localhost for development
-    'grievance-handling-system-project-1avouw056.vercel.app',  # Vercel domain
+    '.vercel.app',  # Allow all subdomains under vercel.app
 ]
 
 
